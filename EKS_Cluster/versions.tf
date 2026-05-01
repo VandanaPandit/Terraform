@@ -1,13 +1,9 @@
 terraform {
-  required_version = ">= 1.0.0"
+  required_version = ">=1.12.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 6.0"
-    }
-    random = {
-      source  = "hashicorp/random"
-      version = "~> 3.5"
+      version = ">=6.41.0"
     }
   }
   backend "s3" {
@@ -16,10 +12,9 @@ terraform {
     region = "value"
     encrypt = true
     use_lockfile = true
-
   }
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = var.aws_region
 }
